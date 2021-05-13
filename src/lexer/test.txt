@@ -1,0 +1,23 @@
+creaCara(Matilde, 120, 150)
+
+creaCara(Andres, 300, 150)
+
+cambiaEstadoOjos(Andres, abierto)
+
+cambiaEstadoOjos(Andres, cerrado)
+
+ciclo 4
+    si estadoOjoDer = abierto entonces
+        si <> estadoOjoIzq <> abierto entonces
+            cambiaEstadoOjos(Matilde, cerrado)
+        finSi
+    sino
+        cambiaEstadoOjos(Matilde, abierto)
+    finSi
+
+    cambiaEstadoBoca(Matilde, sonriente)
+
+    cambiaEstadoBoca(Andres, enojado)
+
+    cambiaEstadoBoca(Matilde, neutro)
+finCiclo

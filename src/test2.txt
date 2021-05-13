@@ -1,0 +1,18 @@
+creaCara(Ricardo, 20, 2)
+cambiaEstadoOjo(Ricardo, izquierdo, cerrado)
+si cerrado = estadoOjoIzq entonces
+    cambiaEstadoOjo(Ricardo, derecho, cerrado)
+finSi
+
+ciclo 3
+    si abierto = estadoOjoIzq entonces        
+        cambiaEstadoOjos(Ricardo, abierto)
+        cambiaEstadoBoca(Ricardo, sonriente)
+    sino
+        cambiaEstadoOjos(Ricardo, cerrado)
+        cambiaEstadoBoca(Ricardo, triste)
+    finSi
+finCiclo
+
+creaCara(Atenea, 15, 2)
+cambiaEstadoOjos(Atenea, cerrado)
