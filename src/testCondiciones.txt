@@ -1,10 +1,10 @@
 si abierto = estadoOjoDer entonces
-    creaCara(Ricardo, 10 , 10)
+    creaCara(Ricardo, 10 , 5)
 sino
-    creaCara(Atenea, 10, 10)
+    creaCara(Atenea, 10, 5)
 finSi
-       
-ciclo 1
-creaCara(hol1, 1, 1)
+
+ciclo 2
+    creaCara(hol1, 1, 1)
 finCiclo
 

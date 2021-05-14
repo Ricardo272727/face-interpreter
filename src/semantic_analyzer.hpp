@@ -156,9 +156,20 @@ class SemanticAnalyzer{
     void printInstructions(){
         Instruction * current = firstInstr;
         while(current != NULL){
-            cout << "Instr type: " << current->getFunctionType() << endl;
+            cout << "Instr type: " << current->getFunctionType() << this->getInstrTypeStr(current->getType()) << endl;
             current = current->getNextInstr();
         }
+    }
+
+    string getInstrTypeStr(InstrType type){
+        if(type == InstrType::func){
+            return "func";
+        } else if(InstrType::bucle == type){
+            return "bucle";
+        } else if(InstrType::cond == type){
+            return "cond";
+        }
+        return "unknown";
     }
 
     private:

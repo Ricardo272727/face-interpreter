@@ -1,6 +1,6 @@
-creaCara(Ricardo, 120, 150)
+creaCara(Ricardo, 20, 5)
 
-creaCara(Andres, 300,150)
+creaCara(Andres, 30, 5)
 
 cambiaEstadoOjos(Andres, abierto)
 
@@ -9,21 +9,13 @@ cambiaEstadoBoca(Andres, cerrado)
 ciclo 4
     si estadoOjoDer = abierto entonces
         si estadoOjoIzq <> abierto entonces
-            cambiaEstadoOjos(Matilde, cerrado)
+            cambiaEstadoOjos(Andres, cerrado)
         finSi
     sino
-        cambiaEstadoOjos(Matilde, abierto)
+        cambiaEstadoOjos(Andres, abierto)
     finSi
     
-    cambiaEstadoBoca ( Matilde, sonriente )
 
     cambiaEstadoBoca(Andres, enojado)
 
-    cambiaEstadoBoca(Matilde, cerrado)
-finCiclo
-
-
-
-ciclo 4
-    creaCara(Ricardo, 1, 1)
 finCiclo

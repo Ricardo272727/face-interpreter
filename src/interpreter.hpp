@@ -48,6 +48,10 @@ class Interpreter{
             string id = args->at(0);
             int posX = stoi(args->at(1));
             int posY = stoi(args->at(2));
+            Face * faceExists = this->st->findFace(id);
+            if(faceExists != NULL){
+                this->showError("Identificador previamente declarado: " + id);
+            }
             Face * f = new Face(id, posX, posY, "sonriente", "abierto", "abierto");
             this->st->addItem(f);
             f->print();
@@ -126,7 +130,7 @@ class Interpreter{
         string opBool1 = this->getOpBoolValue(instr->getOpBool1());
         string opBool2 = this->getOpBoolValue(instr->getOpBool2());
         string comp = instr->getComp();
-
+        cout << "Exec cond" << opBool1 << comp << opBool2 << endl;
         if(
             (comp.compare("=") == 0 && opBool2.compare(opBool1) == 0) ||
             (comp.compare("<>") == 0 && opBool2.compare(opBool1) != 0)
