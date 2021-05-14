@@ -29,12 +29,17 @@ class SemanticAnalyzer{
         if(this->currentInstr->getType() == InstrType::cond){
             this->currentInstr->setBuildingTrue(false);
             this->currentInstr->setBuildingFalse(false);
+            if(!this->stackInstr->empty()){
+                this->currentInstr = this->stackInstr->top();
+                this->stackInstr->pop();
+            }
         }
     }
 
     void condPrimaSinoInstr(){
         if(this->currentInstr->getType() == InstrType::cond){
             this->currentInstr->setBuildingFalse(true);
+            this->currentInstr->setBuildingTrue(false);
         }
     }
 
@@ -48,6 +53,10 @@ class SemanticAnalyzer{
     void finBucleInstr(){
         if(this->currentInstr->getType() == InstrType::bucle){
             this->currentInstr->setBuildingTrue(false);
+            if(!this->stackInstr->empty()){
+                this->currentInstr = this->stackInstr->top();
+                this->stackInstr->pop();
+            }
         }
     }
 
@@ -119,8 +128,24 @@ class SemanticAnalyzer{
         } else if(
             this->currentInstr->getType() == InstrType::cond ||
             this->currentInstr->getType() == InstrType::bucle
-        ){
-            Instruction * curr;
+        ) {
+            if(
+                instr->getType() == InstrType::cond || 
+                instr->getType() == InstrType::bucle
+            ) {
+                if(
+                    this->currentInstr->getBuildingTrue() ||
+                    this->currentInstr->getBuildingFalse()
+                ){
+                    this->stackInstr->push(this->currentInstr);
+                }
+                this->addInstrToInstr(this->currentInstr, instr);
+                instr->setBuildingTrue(true);
+                this->currentInstr = instr;
+            } else {
+                this->addInstrToInstr(this->currentInstr, instr);
+            }
+            /*
             if(this->currentInstr->getBuildingTrue()){
                 if(this->currentInstr->getInstrTrue() == NULL){
                     this->currentInstr->setInstrTrue(instr);
@@ -144,7 +169,7 @@ class SemanticAnalyzer{
             } else {
                 this->currentInstr->setNextInstr(instr);
                 this->currentInstr = instr;               
-            }
+            }*/
         } else {
             this->currentInstr->setNextInstr(instr);
             this->currentInstr = instr;
@@ -152,6 +177,36 @@ class SemanticAnalyzer{
     }
 
     Instruction * getFirstInstr(){ return this->firstInstr; }
+
+    void addInstrToInstr(Instruction * parentInstr, Instruction * instr){
+        Instruction * head = NULL;
+        bool buildTrue = parentInstr->getBuildingTrue();
+        bool buildFalse = parentInstr->getBuildingFalse();
+        if(buildTrue){
+            head = parentInstr->getInstrTrue();
+            if(head == NULL){
+                parentInstr->setInstrTrue(instr);
+            } else {
+                while(head->getNextInstr() != NULL){
+                    head = head->getNextInstr();
+                }   
+                head->setNextInstr(instr);
+            }
+        } else if(buildFalse){
+            head = parentInstr->getInstrFalse();
+            if(head == NULL){
+                parentInstr->setInstrFalse(instr);
+            } else {
+                while(head->getNextInstr() != NULL){
+                    head = head->getNextInstr();
+                }   
+                head->setNextInstr(instr);
+            }
+        } else {
+            parentInstr->setNextInstr(instr);
+            this->currentInstr = instr;
+        }
+    }
 
     void printInstructions(){
         Instruction * current = firstInstr;

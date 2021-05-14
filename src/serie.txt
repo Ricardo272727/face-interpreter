@@ -1,0 +1,15 @@
+creaCara(cara1, 5, 1)
+
+ciclo 6
+    si estadoOjoIzq = abierto entonces
+        si estadoOjoDer = abierto entonces
+            cambiaEstadoOjo(cara1, derecho, cerrado)
+        sino
+            si estadoOjoIzq = abierto entonces
+                si estadoOjoDer = cerrado entonces
+                    cambiaEstadoOjos(cara1, abierto)
+                finSi
+            finSi
+        finSi
+    finSi
+finCiclo

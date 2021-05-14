@@ -9,7 +9,6 @@ ciclo 3
         cambiaEstadoOjos(Ricardo, abierto)
         cambiaEstadoBoca(Ricardo, sonriente)
     sino
-        cambiaEstadoOjos(Ricardo, cerrado)
         cambiaEstadoBoca(Ricardo, triste)
     finSi
 finCiclo

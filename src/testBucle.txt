@@ -1,9 +1,6 @@
 
 ciclo 3
-    creaCara(Ricardo, 10, 10)
+    creaCara(Ricardo, 25, 5)
     cambiarNombre(Ricardo, Alejandro)
-    borraCara(Ricardo)
-    cambiaEstadoOjo(Ricardo, izquierdo, cerrado)
-    cambiaEstadoOjos(Ricardo, abierto)
-    cambiaEstadoBoca(Ricardo, abierto)
+    borraCara(Alejandro)
 finCiclo

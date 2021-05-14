@@ -130,13 +130,15 @@ class Interpreter{
         string opBool1 = this->getOpBoolValue(instr->getOpBool1());
         string opBool2 = this->getOpBoolValue(instr->getOpBool2());
         string comp = instr->getComp();
-        cout << "Exec cond" << opBool1 << comp << opBool2 << endl;
+        //cout << "Exec cond" << opBool1 << comp << opBool2 << endl;
         if(
             (comp.compare("=") == 0 && opBool2.compare(opBool1) == 0) ||
             (comp.compare("<>") == 0 && opBool2.compare(opBool1) != 0)
         ) {
+            //cout << "In cond" << opBool1 << comp << opBool2 << endl;
             this->execute(instr->getInstrTrue());
         } else if(instr->getInstrFalse() != NULL){
+            //cout << "In cond else" << opBool1 << comp << opBool2 << endl;
             this->execute(instr->getInstrFalse());
         }
         

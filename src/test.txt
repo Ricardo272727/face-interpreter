@@ -1,21 +1,33 @@
-creaCara(Ricardo, 20, 5)
+creaCara(Rick, 30, 5)
 
-creaCara(Andres, 30, 5)
+cambiaEstadoOjo(Rick, derecho, cerrado)
 
-cambiaEstadoOjos(Andres, abierto)
-
-cambiaEstadoBoca(Andres, cerrado)
-
-ciclo 4
-    si estadoOjoDer = abierto entonces
-        si estadoOjoIzq <> abierto entonces
-            cambiaEstadoOjos(Andres, cerrado)
+ciclo 2
+    ciclo 2
+        si estadoOjoDer = abierto entonces
+            si estadoOjoIzq = abierto entonces
+                cambiaEstadoOjos(Rick, cerrado)
+            finSi
+        sino
+            cambiaEstadoOjos(Rick, abierto)
         finSi
-    sino
-        cambiaEstadoOjos(Andres, abierto)
-    finSi
-    
-
-    cambiaEstadoBoca(Andres, enojado)
-
+    finCiclo
 finCiclo
+
+si estadoOjoDer = cerrado entonces
+    cambiaEstadoBoca(Rick, cerrado)
+finSi
+
+si estadoBoca = cerrado entonces
+    ciclo 2
+        si estadoBoca = cerrado entonces
+            cambiaEstadoBoca(Rick, triste)
+        sino
+            si estadoBoca = triste entonces
+                cambiaEstadoBoca(Rick, cerrado)
+            finSi
+        finSi
+    finCiclo
+finSi
+
+creaCara(Atenea, 10, 10)
